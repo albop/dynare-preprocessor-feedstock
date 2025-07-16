@@ -1,5 +1,6 @@
-{% set build = 1 %}
-{% set commit = "6235e6907526d468e2c35f14c38db1e308698bc9" %}
+{% set build = 2 %}
+{% set commit = "2ff50f5690885f98aa3753bee9814e6e7d850c72" %}
+{% set sha = "8290536152a6a8da8ca32aeaa3c040ca17c6429da4fe34fb2683a67f0648b245" %}
 
 package:
   name: dynare-preprocessor
@@ -7,7 +8,7 @@ package:
 
 source:
   url: https://git.dynare.org/Dynare/preprocessor/-/archive/{{ commit }}/preprocessor.tar.gz
-  sha256: 06f76245ff5c6ac0811438cea6b817a321dc702c188b680e2a3191b54837c4ab
+  sha256: {{ sha }}
 
 build:
   number: {{ build }}
