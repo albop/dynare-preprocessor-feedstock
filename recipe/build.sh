@@ -3,7 +3,7 @@
 export BOOST_ROOT=$PREFIX
 if [ "$(uname)" == "Darwin" ]; then
   meson setup --buildtype=release build_preproc -Dcpp_args='-D_LIBCPP_DISABLE_AVAILABILITY'
-elif
+else
   meson setup --buildtype=release build_preproc
 fi
 meson compile -C build_preproc
