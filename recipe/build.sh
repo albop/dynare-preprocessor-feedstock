@@ -1,11 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-export BOOST_ROOT=$PREFIX
+set -e
+set -x
+
 if [ "$(uname)" == "Darwin" ]; then
-  meson setup --buildtype=release build_preproc -Dcpp_args='-D_LIBCPP_DISABLE_AVAILABILITY -pthread' -Dcpp_link_args='-pthread'
-else
-  meson setup --buildtype=release build_preproc -Dcpp_link_args='-pthread'
+  # See https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
+  CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
+
+meson setup --buildtype=release build_preproc -Dcpp_link_args='-pthread'
+
 meson compile -C build_preproc
 mkdir -p $PREFIX/bin
 cp build_preproc/src/dynare-preprocessor $PREFIX/bin/dynare-preprocessor
