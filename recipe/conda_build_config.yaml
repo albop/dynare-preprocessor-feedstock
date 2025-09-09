@@ -1,2 +1,4 @@
 c_compiler:
-  - g++
+  - gcc
+cxx_compiler:
+  - gxx
