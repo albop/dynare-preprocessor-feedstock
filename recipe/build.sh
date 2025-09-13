@@ -7,8 +7,7 @@ export BOOST_ROOT=$PREFIX
 
 if [ "$(uname)" == "Darwin" ]; then
   # See https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
-  CXX="g++"
-  CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
+  CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY -fexperimental-library"
 fi
 
 meson setup --buildtype=release build_preproc -Dcpp_link_args='-pthread'
