@@ -10,7 +10,7 @@ if [ "$(uname)" == "Darwin" ]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY -fexperimental-library"
 fi
 
-meson setup --buildtype=release build_preproc -Dcpp_link_args='-pthread'
+meson setup --buildtype=release build_preproc -Dcpp_link_args='-pthread' || (cat $SRC_DIR/build_preproc/meson-logs/meson-log.txt; exit 1)
 
 meson compile -C build_preproc
 mkdir -p $PREFIX/bin
